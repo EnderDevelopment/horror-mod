@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "horrormod",
+  "version": "1.0.0",
+  "name": "Horror Mod",
+  "description": "A horror-themed Minecraft mod",
+  "authors": ["NicuTheScratcher"],
+  "contact": {
+    "homepage": "https://example.com",
+    "sources": "https://github.com/NicuTheScratcher/horrormod"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.nicuthescratcher.horrormod.HorrorMod"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": "1.21.4",
+    "java": ">=17"
+  }
+}

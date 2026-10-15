@@ -1,0 +1,44 @@
+plugins {
+    id 'fabric-loom' version '1.6-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'FabricMC Maven'
+        url = 'https://maven.fabricmc.net/'
+    }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.4'
+    mappings 'net.fabricmc:yarn:1.21.4+build.1:v2'
+    modImplementation 'net.fabricmc:fabric-loader:0.14.22'
+}
+
+loom {
+    refreshDeps {
+        refresh {
+            version = '1.21.4'
+            classifier = 'yarn-build.1'
+        }
+    }
+    ide {
+        runConfigs {
+            create('client') {
+                name = 'Client'
+                mainClass = 'net.fabricmc.devlaunchinjector.Main'
+                workingDirectory = project.file('run')
+                args = ['--assetIndex', '1.21.4', '--assetsDir', 'assets', '--accessToken', 'FabricMC']
+                properties = [
+                    'fabric.development': 'true',
+                    'fabric.dli.main': 'net.fabricmc.devlaunchinjector.Main',
+                    'fabric.dli.env': 'client'
+                ]
+            }
+        }
+    }
+}
